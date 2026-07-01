@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunwoo Packaging Pvt. Ltd – India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0D2257;
+      --navy2:#1A3580;
+      --gold:#C8882A;
+      --gold2:#E8A030;
+      --light:#F4F6FB;
+      --white:#fff;
+      --gray:#666;
+      --dark:#111;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
+
+    /* ── TOPBAR ── */
+    .topbar{background:var(--navy);color:rgba(255,255,255,0.75);font-size:.75rem;padding:.45rem 5vw;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .topbar a{color:var(--gold2);text-decoration:none}
+    .topbar span{display:flex;align-items:center;gap:.4rem}
+
+    /* ── NAV ── */
+    nav{position:sticky;top:0;z-index:200;background:var(--white);box-shadow:0 2px 16px rgba(0,0,0,0.09);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:70px}
+    .nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+    .nav-logo img{height:52px;width:auto;object-fit:contain}
+    .nav-logo-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;line-height:1.1;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}
+    .nav-logo-label span{display:block;font-size:.58rem;font-weight:400;letter-spacing:.18em;color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:0;list-style:none}
+    .nav-links a{display:block;padding:.5rem 1rem;font-size:.82rem;font-weight:500;color:var(--dark);text-decoration:none;letter-spacing:.03em;transition:color .2s}
+    .nav-links a:hover{color:var(--navy)}
+    .nav-cta{background:var(--gold);color:var(--white)!important;padding:.5rem 1.3rem!important;border-radius:3px;font-weight:600!important;margin-left:.5rem;transition:background .2s!important}
+    .nav-cta:hover{background:var(--gold2)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px}
+    @media(max-width:860px){
+      .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 5vw 1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.1);gap:.25rem}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+    }
+
+    /* ── HERO ── */
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy)}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--navy) 0%,#1a3580 50%,#0a1a45 100%);z-index:0}
+    .hero-pattern{position:absolute;inset:0;z-index:1;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px}
+    .hero-content{position:relative;z-index:2;text-align:center;padding:5rem 5vw 4rem;max-width:900px}
+    .hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(200,136,42,.15);border:1px solid rgba(200,136,42,.4);color:var(--gold2);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:50px;margin-bottom:1.8rem}
+    .hero-badge::before{content:'🇮🇳';font-size:1rem}
+    .hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.8rem,7vw,5.5rem);line-height:.95;text-transform:uppercase;color:var(--white);margin-bottom:1.4rem}
+    .hero-title em{font-style:normal;color:var(--gold)}
+    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:56ch;margin:0 auto 2.5rem}
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:var(--gold);color:var(--white);text-decoration:none;padding:.85rem 2rem;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;transition:background .2s,transform .15s;display:inline-block}
+    .btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+    .btn-outline{border:1.5px solid rgba(255,255,255,.45);color:rgba(255,255,255,.85);text-decoration:none;padding:.85rem 2rem;font-weight:500;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;transition:all .2s;display:inline-block}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.12)}
+    .stat{text-align:center}
+    .stat-n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--gold);line-height:1}
+    .stat-l{font-size:.68rem;color:rgba(255,255,255,.45);letter-spacing:.14em;text-transform:uppercase;margin-top:.3rem}
+
+    /* ── MARQUEE ── */
+    .marquee{background:var(--gold);overflow:hidden;padding:.7rem 0;white-space:nowrap}
+    .marquee-track{display:inline-block;animation:scroll 28s linear infinite}
+    .marquee-track span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin:0 2rem}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── SECTION UTILS ── */
+    section{padding:5.5rem 5vw}
+    .section-tag{font-size:.7rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+    .section-tag::before{content:'';display:block;width:28px;height:2px;background:var(--gold)}
+    .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:1.02;text-transform:uppercase;color:var(--navy);margin-bottom:1.2rem}
+    .section-sub{font-size:.98rem;color:var(--gray);line-height:1.75;max-width:58ch}
+
+    /* ── WHY CHOOSE US ── */
+    #why{background:var(--light)}
+    .why-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:center}
+    .why-image{border-radius:6px;overflow:hidden;position:relative}
+    .why-image-inner{background:var(--navy);padding:3rem 2.5rem;border-radius:6px;display:flex;flex-direction:column;gap:2rem}
+    .why-image-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:var(--white);text-transform:uppercase;border-bottom:2px solid var(--gold);padding-bottom:1rem}
+    .why-card{display:flex;gap:1rem;align-items:flex-start}
+    .why-icon{width:48px;height:48px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .why-card-title{font-weight:700;font-size:.95rem;color:var(--white);margin-bottom:.35rem}
+    .why-card-text{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.6}
+    .why-right{}
+    .why-features{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2rem}
+    .feature-box{background:var(--white);border:1px solid #e5e8f0;border-radius:4px;padding:1.25rem 1.1rem;border-left:3px solid var(--gold)}
+    .feature-box-title{font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin-bottom:.3rem}
+    .feature-box-text{font-size:.78rem;color:var(--gray);line-height:1.55}
+
+    /* ── PRODUCTS ── */
+    #products{background:#fff}
+    .products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+    .product-card{background:var(--light);border-radius:6px;overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:pointer}
+    .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(13,34,87,.12)}
+    .product-thumb{height:180px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+    .product-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(13,34,87,.5))}
+    .product-body{padding:1.4rem 1.25rem}
+    .product-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;text-transform:uppercase;color:var(--navy);margin-bottom:.5rem}
+    .product-desc{font-size:.82rem;color:var(--gray);line-height:1.6}
+    .product-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:var(--gold);text-decoration:none;margin-top:.75rem;letter-spacing:.06em;text-transform:uppercase}
+    .product-link::after{content:'→'}
+
+    /* ── INFRASTRUCTURE ── */
+    #infra{background:var(--navy)}
+    #infra .section-tag{color:var(--gold2)}
+    #infra .section-title{color:var(--white)}
+    #infra .section-sub{color:rgba(255,255,255,.55)}
+    .infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+    .infra-text p{color:rgba(255,255,255,.6);line-height:1.8;font-size:.95rem;margin-bottom:1.2rem}
+    .infra-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .infra-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1.2rem 1rem;text-align:center}
+    .infra-card-icon{font-size:2rem;margin-bottom:.5rem}
+    .infra-card-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gold);line-height:1}
+    .infra-card-label{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-top:.25rem}
+
+    /* ── GLOBAL PLANTS ── */
+    #plants{background:var(--light)}
+    .plants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .plant-card{background:var(--white);border-radius:6px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+    .plant-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,34,87,.12)}
+    .plant-card.active{border:2px solid var(--gold)}
+    .plant-flag{height:120px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,var(--navy),var(--navy2))}
+    .plant-body{padding:1.4rem 1.25rem}
+    .plant-country{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+    .plant-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--navy);margin-bottom:.5rem}
+    .plant-desc{font-size:.8rem;color:var(--gray);line-height:1.6}
+    .plant-badge{display:inline-block;background:var(--gold);color:var(--white);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:2px;margin-top:.6rem}
+
+    /* ── PROCESS ── */
+    #process{background:#fff}
+    .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3.5rem;position:relative}
+    .process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:0}
+    .step{text-align:center;position:relative;z-index:1;padding:0 .75rem}
+    .step-num{width:72px;height:72px;border-radius:50%;background:var(--navy);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:3px solid var(--gold);position:relative}
+    .step:first-child .step-num,.step:last-child .step-num{background:var(--gold);color:var(--white);border-color:var(--gold)}
+    .step-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--navy);margin-bottom:.4rem}
+    .step-desc{font-size:.75rem;color:var(--gray);line-height:1.5}
+
+    /* ── CSR ── */
+    #csr{background:var(--navy)}
+    #csr .section-tag{color:var(--gold2)}
+    #csr .section-title{color:var(--white)}
+    .csr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+    .csr-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:2rem 1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
+    .csr-icon{font-size:2rem;flex-shrink:0}
+    .csr-title{font-weight:700;color:var(--white);margin-bottom:.4rem;font-size:.95rem}
+    .csr-text{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--light)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .contact-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem}
+    .contact-row{display:flex;gap:1rem;align-items:flex-start}
+    .contact-icon{width:44px;height:44px;background:var(--navy);color:var(--white);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .contact-label{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+    .contact-value{font-size:.93rem;color:var(--dark);font-weight:500}
+    .contact-form{display:flex;flex-direction:column;gap:1rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-group{display:flex;flex-direction:column;gap:.4rem}
+    .form-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+    .form-input,.form-textarea,.form-select{border:1.5px solid #dde1ec;background:#fff;padding:.75rem 1rem;font-size:.88rem;font-family:'Inter',sans-serif;border-radius:3px;outline:none;transition:border-color .2s;color:var(--dark)}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--navy)}
+    .form-textarea{resize:vertical;min-height:110px}
+    .form-submit{background:var(--navy);color:#fff;border:none;padding:.9rem 2.2rem;font-family:'Inter',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;cursor:pointer;transition:background .2s;align-self:flex-start}
+    .form-submit:hover{background:var(--gold)}
+    .form-success{display:none;background:#e8f5e9;border:1px solid #81c784;color:#2e7d32;padding:.9rem 1.1rem;border-radius:3px;font-size:.88rem;font-weight:500;margin-top:.5rem}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark);color:rgba(255,255,255,.4)}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;padding:4rem 5vw 3rem}
+    .footer-brand img{height:48px;background:#fff;border-radius:3px;padding:4px 8px;margin-bottom:1rem}
+    .footer-brand p{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.4);max-width:32ch}
+    .footer-socials{display:flex;gap:.75rem;margin-top:1.2rem}
+    .social-btn{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:4px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:background .2s}
+    .social-btn:hover{background:var(--gold);color:#fff}
+    .footer-col h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin-bottom:1.1rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .footer-col ul li a{font-size:.8rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+    .footer-col ul li a:hover{color:var(--gold)}
+    .newsletter-form{display:flex;gap:.5rem;margin-top:.5rem}
+    .newsletter-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:.6rem .9rem;font-size:.82rem;font-family:'Inter',sans-serif;border-radius:3px;outline:none}
+    .newsletter-input::placeholder{color:rgba(255,255,255,.3)}
+    .newsletter-btn{background:var(--gold);color:#fff;border:none;padding:.6rem 1rem;font-size:.78rem;font-weight:700;border-radius:3px;cursor:pointer;white-space:nowrap}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.4rem 5vw;text-align:center;font-size:.75rem;color:rgba(255,255,255,.3)}
+    .footer-bottom strong{color:var(--gold)}
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s}
+    .wa-float:hover{transform:scale(1.1)}
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media(max-width:900px){
+      .why-grid,.infra-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+      .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+      .process-steps::before{display:none}
+      .plants-grid{grid-template-columns:1fr 1fr}
+      .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+      .hero-stats{gap:1.5rem}
+      .why-features,.infra-cards,.csr-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:580px){
+      .plants-grid{grid-template-columns:1fr}
+      .process-steps{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr}
+      .hero-stats{flex-direction:column;gap:1.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div style="display:flex;gap:2rem;flex-wrap:wrap">
+    <span>📞 <a href="tel:044-45847645">044-45847645</a></span>
+    <span>✉️ <a href="mailto:info.sunwoopackaging@gmail.com">info.sunwoopackaging@gmail.com</a></span>
+  </div>
+  <span>🌐 Global Plants:  Korea · China · Vietnam ·  <strong style="color:var(--gold2)">India</strong></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="LOGO_PLACEHOLDER" alt="Sunwoo Packaging"/>
+    <div class="nav-logo-label">
+      Sunwoo Packaging
+      <span>Private Limited – India</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#why">About Us</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#infra">Infrastructure</a></li>
+    <li><a href="#plants">Global Plants</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">India Plant – Now Operational</div>
+    <h1 class="hero-title">
+      Welcome to<br>
+      <em>Sunwoo Packaging</em><br>
+      India
+    </h1>
+    <p class="hero-sub">
+      A proud part of the global Sunwoo family — delivering complete corrugated packaging solutions
+      with world-class manufacturing standards, right here in India.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+      <a href="#products" class="btn-outline">Our Products</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Years Global Experience</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Countries</div></div>
+      <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Products Packaged</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Customisable</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Corrugated Boxes</span><span>·</span><span>TV Boxes</span><span>·</span>
+    <span>Outer Cartons</span><span>·</span><span>Inner Cartons</span><span>·</span>
+    <span>Offset Boxes</span><span>·</span><span>Partitions &amp; Pulp Cushion</span><span>·</span>
+    <span>Plastic Trays</span><span>·</span><span>Custom Print</span><span>·</span>
+    <span>Eco-Friendly Packaging</span><span>·</span>
+    <span>Corrugated Boxes</span><span>·</span><span>TV Boxes</span><span>·</span>
+    <span>Outer Cartons</span><span>·</span><span>Inner Cartons</span><span>·</span>
+    <span>Offset Boxes</span><span>·</span><span>Partitions &amp; Pulp Cushion</span><span>·</span>
+    <span>Plastic Trays</span><span>·</span><span>Custom Print</span><span>·</span>
+    <span>Eco-Friendly Packaging</span><span>·</span>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-image-inner">
+      <h3>Why Choose Sunwoo Packaging India?</h3>
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <div>
+          <div class="why-card-title">Superior Product Quality</div>
+          <div class="why-card-text">Every product we manufacture is tested for strength, structural integrity and print accuracy before leaving our facility.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <div>
+          <div class="why-card-title">Global Expertise, Local Execution</div>
+          <div class="why-card-text">Backed by 20+ years of Sunwoo's international packaging experience across Vietnam, China and Korea — now in India.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚚</div>
+        <div>
+          <div class="why-card-title">Fast & Reliable Delivery</div>
+          <div class="why-card-text">Our customers are our top priority. We ensure timely, efficient delivery across India — every order, every time.</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title">Manufacturer &amp; Supplier of<br>High-Quality Carton Boxes</h2>
+      <p class="section-sub">Sunwoo Packaging Pvt. Ltd. is the India arm of the globally trusted Sunwoo Group — specialists in corrugated and carton packaging for electronics, FMCG, cosmetics, food &amp; beverage, and industrial sectors.</p>
+      <p class="section-sub" style="margin-top:1rem">Our Indian plant brings world-class Korean packaging technology to Indian manufacturers, combining modern machinery, eco-friendly materials, and precision craftsmanship.</p>
+      <div class="why-features">
+        <div class="feature-box">
+          <div class="feature-box-title">Precision Die-Cutting</div>
+          <div class="feature-box-text">Accurate die-cut boxes for any product shape or size</div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-title">Eco-Friendly Boards</div>
+          <div class="feature-box-text">100% recyclable, sustainably sourced raw materials</div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-title">Custom Branding</div>
+          <div class="feature-box-text">Multi-colour flexo & offset print on all products</div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-box-title">Bulk Capability</div>
+          <div class="feature-box-text">Small batch to mass production with same quality</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-tag">What We Make</div>
+      <h2 class="section-title">Diverse Products for<br>Every Industry</h2>
+    </div>
+    <a href="#contact" class="btn-primary">Request a Sample</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-thumb">📺</div>
+      <div class="product-body">
+        <div class="product-name">TV Box</div>
+        <p class="product-desc">Specially engineered to protect sensitive electronics. Our TV boxes ensure maximum safety during transit and storage with precision cushioning.</p>
+        <a href="#contact" class="product-link">Enquire Now</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-thumb">📦</div>
+      <div class="product-body">
+        <div class="product-name">Outer Carton</div>
+        <p class="product-desc">Made from high-quality corrugated board, our outer cartons provide optimal protection and flexibility for a wide range of products and industries.</p>
+        <a href="#contact" class="product-link">Enquire Now</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-thumb">🛡️</div>
+      <div class="product-body">
+        <div class="product-name">Partitions &amp; Pulp Cushion</div>
+        <p class="product-desc">Our partitions and pulp cushions protect products from impact and scratches, ensuring items arrive in perfect condition every time.</p>
+        <a href="#contact" class="product-link">Enquire Now</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-thumb">🗂️</div>
+      <div class="product-body">
+        <div class="product-name">Inner Carton</div>
+        <p class="product-desc">Designed to provide rigidity and additional protection for small or delicate items requiring careful handling and storage.</p>
+        <a href="#contact" class="product-link">Enquire Now</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-thumb">✂️</div>
+      <div class="product-body">
+        <div class="product-name">Custom Die-Cut Boxes</div>
+        <p class="product-desc">Precision die-cut packaging built to your exact product dimensions — from retail display boxes to heavy-duty industrial packaging.</p>
+        <a href="#contact" class="product-link">Enquire Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE -->
+<section id="infra">
+  <div class="section-tag">Our Facility</div>
+  <h2 class="section-title">Infrastructure</h2>
+  <div class="infra-grid">
+    <div class="infra-text">
+      <p>Our India plant is designed with efficiency and safety at its core — with spacious production and storage areas that ensure smooth, uninterrupted workflow.</p>
+      <p>Employee safety and environmental responsibility are our highest priorities. Our facility includes dedicated wastewater treatment systems and green manufacturing processes.</p>
+      <p>All our machinery is sourced from globally certified manufacturers, and our production lines are regularly audited to international quality standards — ensuring the highest-quality product in every run.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:1rem;display:inline-block">Visit Our Plant</a>
+    </div>
+    <div class="infra-cards">
+      <div class="infra-card">
+        <div class="infra-card-icon">🏭</div>
+        <div class="infra-card-num">50,000+</div>
+        <div class="infra-card-label">Sq. Ft. Factory</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-icon">⚙️</div>
+        <div class="infra-card-num">15+</div>
+        <div class="infra-card-label">Production Lines</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-icon">👷</div>
+        <div class="infra-card-num">100+</div>
+        <div class="infra-card-label">Skilled Workers</div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-icon">🌿</div>
+        <div class="infra-card-num">100%</div>
+        <div class="infra-card-label">Eco Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL PLANTS -->
+<section id="plants">
+  <div class="section-tag">Sunwoo Worldwide</div>
+  <h2 class="section-title">Our Global Manufacturing Plants</h2>
+  <p class="section-sub">With factories across Asia, Sunwoo delivers consistent packaging quality at global scale.</p>
+  <div class="plants-grid">
+    <div class="plant-card">
+      <div class="plant-flag">🇰🇷</div>
+      <div class="plant-body">
+        <div class="plant-country">South Korea</div>
+        <div class="plant-name">Sunwoo Paper Co.,LTD</div>
+        <p class="plant-desc">The founding plant of the Sunwoo Group — headquarters and R&D centre for all global packaging innovation.</p>
+      </div>
+    </div>
+    <div class="plant-card">
+      <div class="plant-flag">🇨🇳</div>
+      <div class="plant-body">
+        <div class="plant-country">China</div>
+        <div class="plant-name">Weihai Sunwoo Paper Co.,LTD</div>
+        <p class="plant-desc">High-volume corrugated and carton manufacturing serving electronics and consumer goods sectors across Asia.</p>
+      </div>
+    </div>
+    <div class="plant-card">
+      <div class="plant-flag">🇻🇳</div>
+      <div class="plant-body">
+        <div class="plant-country">Vietnam</div>
+        <div class="plant-name">Vina Sunwoo Co., Ltd</div>
+        <p class="plant-desc">Serving Southeast Asian markets with premium carton packaging for food, cosmetics, beverages and electronics.</p>
+      </div>
+    </div>
+    <div class="plant-card active">
+      <div class="plant-flag">🇮🇳</div>
+      <div class="plant-body">
+        <div class="plant-country">India – YOU ARE HERE</div>
+        <div class="plant-name">Sunwoo Packaging Pvt. Ltd.</div>
+        <p class="plant-desc">India's newest Sunwoo plant — bringing global-standard corrugated packaging to Indian manufacturers across all industries.</p>
+        <div class="plant-badge">Now Operational</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align:center;max-width:600px;margin:0 auto 0">
+    <div class="section-tag" style="justify-content:center">How We Work</div>
+    <h2 class="section-title">Our Process at Sunwoo India</h2>
+    <p class="section-sub" style="margin:0 auto">From your first enquiry to final delivery — a streamlined process ensuring quality at every stage.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Design</div>
+      <div class="step-desc">Sign agreement &amp; gather your packaging idea and requirements</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Sample Approval</div>
+      <div class="step-desc">Adjust colours and print to match your brand and approval sample</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Production</div>
+      <div class="step-desc">Full-scale manufacturing on our precision corrugating lines</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Quality Check</div>
+      <div class="step-desc">Rigorous QC inspection before packaging is cleared for delivery</div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-title">Delivery</div>
+      <div class="step-desc">Fast and safe dispatch to your doorstep, anywhere in India</div>
+    </div>
+  </div>
+</section>
+
+<!-- CSR -->
+<section id="csr">
+  <div class="section-tag">Responsibility</div>
+  <h2 class="section-title">Environment &amp; Social Responsibility</h2>
+  <div class="csr-grid">
+    <div class="csr-card">
+      <div class="csr-icon">💧</div>
+      <div>
+        <div class="csr-title">Wastewater Treatment</div>
+        <div class="csr-text">Our facility has a dedicated wastewater treatment system ensuring zero untreated water discharge, protecting local water bodies and communities.</div>
+      </div>
+    </div>
+    <div class="csr-card">
+      <div class="csr-icon">🌱</div>
+      <div>
+        <div class="csr-title">Eco-Friendly Manufacturing</div>
+        <div class="csr-text">We use 100% recyclable corrugated boards and FSC-certified paper. Our production process is designed to minimise carbon footprint at every step.</div>
+      </div>
+    </div>
+    <div class="csr-card">
+      <div class="csr-icon">🤝</div>
+      <div>
+        <div class="csr-title">Community Engagement</div>
+        <div class="csr-text">We actively support local communities through skill development, employment opportunities, and charitable initiatives in our operating regions.</div>
+      </div>
+    </div>
+    <div class="csr-card">
+      <div class="csr-icon">🛡️</div>
+      <div>
+        <div class="csr-title">Worker Safety First</div>
+        <div class="csr-text">Our plant is built with worker safety as a primary consideration — certified safety systems, regular training, and a zero-accident culture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub">Leave your details and our team will get back to you within 24 hours with a competitive quote.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Factory Address</div>
+            <div class="contact-value">Sunwoo Packaging Pvt. Ltd., India</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">044-45847645</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">info.sunwoopackaging@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Working Hours</div>
+            <div class="contact-value">Mon – Sat, 8:00 AM – 5:00 PM IST</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">location</div>
+            <div class="contact-value"><a href="https://maps.app.goo.gl/Z3rjMC6E57xRvUEh8" target="_blank" style="color:var(--navy);text-decoration:underline">SUNWOO PACKAGING INDIA</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name *</label>
+            <input class="form-input" type="text" placeholder="Rahul Sharma" id="fname"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company Name</label>
+            <input class="form-input" type="text" placeholder="Your Company Ltd." id="fcompany"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone *</label>
+            <input class="form-input" type="tel" placeholder="+91 98765 43210" id="fphone"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input class="form-input" type="email" placeholder="you@company.com" id="femail"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product Interest</label>
+          <select class="form-select" id="fproduct">
+            <option value="">– Select a product –</option>
+            <option>TV Box</option>
+            <option>Outer Carton</option>
+            <option>Inner Carton</option>
+            <option>Offset Box & Plastic Tray</option>
+            <option>Partitions & Pulp Cushion</option>
+            <option>Custom Die-Cut Boxes</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message / Requirements</label>
+          <textarea class="form-textarea" id="fmessage" placeholder="Describe your box size, quantity, board type, printing needs…"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Send Enquiry →</button>
+        <div class="form-success" id="formSuccess">✅ Thank you! We'll contact you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="LOGO_PLACEHOLDER" alt="Sunwoo Packaging"/>
+      <p>Delivering complete corrugated packaging solutions with global expertise and Indian precision — for every industry, every need.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram">in</a>
+        <a class="social-btn" href="#" title="LinkedIn">Li</a>
+        <a class="social-btn" href="#" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#products">TV Box</a></li>
+        <li><a href="#products">Outer Carton</a></li>
+        <li><a href="#products">Inner Carton</a></li>
+        <li><a href="#products">Partitions &amp; Pulp Cushion</a></li>
+        <li><a href="#products">Offset Box &amp; Plastic Tray</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#infra">Infrastructure</a></li>
+        <li><a href="#plants">Global Plants</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.75rem">Subscribe for updates on new products and industry packaging trends.</p>
+      <div class="newsletter-form">
+        <input class="newsletter-input" type="email" placeholder="Your email"/>
+        <button class="newsletter-btn">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 <strong>Sunwoo Packaging Private Limited</strong> · India Plant · Part of the Global Sunwoo Group · All Rights Reserved
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/" class="wa-float" title="Chat on WhatsApp" target="_blank">💬</a>
+
+<script>
+  // Embed logo as base64
+  const LOGO_B64 = "data:image/jpeg;base64,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";
+  document.querySelectorAll('img[src="LOGO_PLACEHOLDER"]').forEach(img => img.src = LOGO_B64);
+
+  // Mobile nav toggle
+  function toggleNav(){
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if(window.scrollY >= s.offsetTop - 100) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = (a.getAttribute('href') === '#' + current) ? 'var(--navy)' : '';
+      a.style.fontWeight = (a.getAttribute('href') === '#' + current) ? '700' : '';
+    });
+  });
+
+  // Form submit
+  function handleSubmit(){
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    if(!name || !email || !phone){ alert('Please fill in Name, Email and Phone.'); return; }
+    document.querySelector('.form-submit').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
