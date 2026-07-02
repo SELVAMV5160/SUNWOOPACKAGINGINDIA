@@ -715,14 +715,45 @@
     });
   });
 
-  // Form submit
+  // Form submit — sends enquiry details automatically to info.sunwoopackaging@gmail.com
   function handleSubmit(){
     const name = document.getElementById('fname').value.trim();
-    const email = document.getElementById('femail').value.trim();
+    const company = document.getElementById('fcompany').value.trim();
     const phone = document.getElementById('fphone').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const product = document.getElementById('fproduct').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+
     if(!name || !email || !phone){ alert('Please fill in Name, Email and Phone.'); return; }
-    document.querySelector('.form-submit').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+
+    const btn = document.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('https://formsubmit.co/ajax/info.sunwoopackaging@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `New Website Enquiry from ${name}`,
+        Name: name,
+        Company: company || '—',
+        Phone: phone,
+        Email: email,
+        'Product Interest': product || '—',
+        Message: message || '—'
+      })
+    })
+    .then(res => res.json())
+    .then(() => {
+      btn.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = originalText;
+      alert('Something went wrong sending your enquiry. Please try again or email us directly at info.sunwoopackaging@gmail.com.');
+    });
   }
 </script>
 </body>
